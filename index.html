@@ -2,57 +2,74 @@
 <html>
 <head>
 <title>Login Form</title>
+<style>
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4; /* Light gray background */
+}.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 300px; /* Adjust width as needed */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333; /* Darker heading color */
+}
+
+label {
+  display: block; /* Labels on their own line */
+  margin-bottom: 5px;
+  color: #555; /* Slightly darker label color */
+}
+
+input[type="text"],
+input[type="email"] {
+  width: calc(100% - 12px); /* Full width input, accounting for padding */
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+button {
+  background-color: #007bff; /* Blue button */
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; /* Full width button */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+#message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}.success {
+  background-color: #d4edda; /* Light green for success */
+  color: #155724; /* Dark green text for success */
+  border: 1px solid #c3e6cb;
+}.error {
+  background-color: #f8d7da; /* Light red for error */
+  color: #721c24; /* Dark red text for error */
+  border: 1px solid #f5c6cb;
+}
+
+</style>
 </head>
 <body>
 
-<h1>Login</h1>
-
-<form id="loginForm">
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" required><br><br>
-  <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" required><br><br>
-  <button type="submit">Login</button>
-</form>
-
-<div id="message"></div>
-
-<script>
-  const form = document.getElementById('loginForm');
-  const messageDiv = document.getElementById('message');
-  const baseUrl = 'https://frontend-take-home-service.fetch.com'; // Base URL
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-
-    try {
-      const response = await fetch(`${baseUrl}/auth/login`, { // Use base URL
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name, email }),
-        credentials: 'include'
-      });
-
-      if (response.ok) {
-        messageDiv.textContent = 'Login successful!';
-        // Optionally redirect:
-        // window.location.href = '/dashboard';
-      } else {
-        const errorData = await response.json().catch(e => ({ message: response.statusText })); // Handle potential JSON parsing errors
-        messageDiv.textContent = `Login failed: ${errorData.message || response.statusText}`;
-        console.error("Login error:", errorData);
-      }
-    } catch (error) {
-      messageDiv.textContent = 'An error occurred: ' + error.message;
-      console.error("Fetch error:", error);
-    }
-  });
-</script>
-
-</body>
-</html>
+<div class="login-container">
