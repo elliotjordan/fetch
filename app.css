@@ -1,1 +1,151 @@
+/* frontend/src/App.css */
 
+.app-container {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column; /* Arrange elements vertically */
+  align-items: center; /* Center horizontally */
+  padding: 20px;
+  min-height: 100vh; /* Ensure full viewport height */
+  background-color: #f4f4f4; /* Light background color */
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Make sure it fills the screen */
+    width: 100vw;
+    background-color: #f0f0f0;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.login-container form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.login-container form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.filter-container {
+  display: flex;
+  gap: 10px;  /* Space between filter elements */
+  margin-bottom: 20px; /* Space below the filter area */
+  align-items: center; /* Vertically align items */
+}
+
+.filter-container label {
+    margin-right: 5px;
+}
+
+.dog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.dog-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;  /* Card background */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.dog-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0; /* Round top corners of image */
+  object-fit: cover; /* Prevent image distortion */
+}
+
+.dog-card h3 {
+  margin-top: 10px;
+}
+
+.dog-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.match-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.match-container button {
+  background-color: #28a745; /* Green for match button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Or whatever height you want */
+}
+
+/* Style the react-select dropdown */
+.filter-container .react-select-container {
+    width: 200px; /* Adjust as needed */
+}
+.filter-container .react-select__control {
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 4px;
+}
+.filter-container .react-select__option {
+    cursor: pointer;
+}
+.filter-container .react-select__option--is-focused {
+    background-color: #f8f9fa; /* Light hover background */
+}
+.filter-container .react-select__option--is-selected {
+    background-color: #007bff; /* Blue selected background */
+    color: white;
+}
