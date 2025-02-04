@@ -1,22 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>React App</title>
-  </head>
-  <body>
-        <div class="login-container"></div><br>
-        <div class="filter-container"></div><br>
-        <div class="app-container"></div><br>
-        <div class="loading-spinner"></div><br>
-        <div class="dog-list"></div><br>
-        <div class="pagination"></div><br>
-        <div class="match-container"></div>
-      <!-- Load React. -->
-   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<head>
+<title>Login Form</title>
+</head>
+<body>
 
-  <!-- Load our React component. -->
-  <script src="src/app.js"></script>
-  </body>
+<h1>Login</h1>
+
+<form id="loginForm">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" required><br><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br><br>
+  <button type="submit">Login</button>
+</form>
+
+<div id="message"></div>
+
+<script>
+  const form = document.getElementById('loginForm');
+  const messageDiv = document.getElementById('message');
+  const baseUrl = 'https://frontend-take-home-service.fetch.com'; // Base URL
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    try {
+      const response = await fetch(`${baseUrl}/auth/login`, { // Use base URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email }),
+        credentials: 'include'
+      });
+
+      if (response.ok) {
+        messageDiv.textContent = 'Login successful!';
+        // Optionally redirect:
+        // window.location.href = '/dashboard';
+      } else {
+        const errorData = await response.json().catch(e => ({ message: response.statusText })); // Handle potential JSON parsing errors
+        messageDiv.textContent = `Login failed: ${errorData.message || response.statusText}`;
+        console.error("Login error:", errorData);
+      }
+    } catch (error) {
+      messageDiv.textContent = 'An error occurred: ' + error.message;
+      console.error("Fetch error:", error);
+    }
+  });
+</script>
+
+</body>
 </html>
