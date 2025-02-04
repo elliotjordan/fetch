@@ -1,7 +1,7 @@
 // frontend/src/App.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css'; // Import your CSS file
+import 'app.css'; // Import your CSS file
 import Select from 'react-select'; // For breed selection
 
 const API_BASE_URL = 'https://frontend-take-home-service.fetch.com';
