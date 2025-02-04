@@ -15,7 +15,7 @@ function App() {
   const [pagination, setPagination] = useState({ from: null, next: null, prev: null });
   const [favorites, setFavorites] = useState([]);
   const [match, setMatch] = useState(null);
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
 
